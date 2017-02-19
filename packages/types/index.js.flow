@@ -2,12 +2,19 @@
 import type { Store as ReduxStore } from 'redux'
 import type { Action } from './actions'
 
+export type Item = {
+  id: string,
+  name: string,
+  selected?: boolean
+}
+
 export type PageState = {
   location: 'index' | 'edit'
 }
 
 export type State = {
-  page: PageState
+  page: PageState,
+  items: Item[]
 }
 
 export type Store = ReduxStore<State, Action>;

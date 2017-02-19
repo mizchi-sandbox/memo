@@ -4,16 +4,15 @@ import React from 'react'
 // eslint-disable-next-line
 import type { Connector } from 'react-redux'
 import type { PageState, Dispatcher } from 'types'
-import Hello from '../components/Hello'
+import Editor from '../components/Editor'
 import Layout from '../components/Layout'
 
-type PageProps = PageState & Dispatcher;
+type PageProps = PageState & Dispatcher
 
-function Page ({ location }: PageProps) {
+function Page ({ location: _ }: PageProps) {
   return (
     <Layout>
-      <div>Location: {location}</div>
-      <Hello/>
+      <Editor onChangeBody={text => console.log(text)}/>
     </Layout>
   )
 }
