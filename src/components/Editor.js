@@ -11,6 +11,7 @@ export default function Editor (
     <div className={styles.EditorWrapper}>
       <textarea
         placeholder="input here"
+        spellCheck="false"
         className={styles.Editor}
         onChange={(ev: SyntheticInputEvent) => props.onChangeBody(ev.target.value)}
       />
