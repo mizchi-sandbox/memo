@@ -1,15 +1,13 @@
 /* @flow */
 import { connect } from 'react-redux'
 import React from 'react'
-// eslint-disable-next-line
-import type { Connector } from 'react-redux'
-import type { Dispatcher } from '@i/types'
+import type { Dispatcher, Connector } from '@i/types'
 import Home from './components/Home'
-import type {Action, State as HomeState} from './reducers'
+import type {Action, State} from './reducers'
 
-type HomeProps = HomeState & Dispatcher<Action>
-
-function HomeContainer ({ dispatch, buffer, layout }: HomeProps) {
+function HomeContainer (
+  { dispatch, buffer, layout }: State & Dispatcher<Action>
+) {
   return (
     <Home
       layoutType={layout.layoutType}
@@ -19,6 +17,6 @@ function HomeContainer ({ dispatch, buffer, layout }: HomeProps) {
   )
 }
 
-const connector: Connector<{}, HomeProps> = connect(({ home }) => home)
+const connector: Connector<{}, State, Action> = connect(({ home }) => home)
 
 export default connector(HomeContainer)

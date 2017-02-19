@@ -1,27 +1,21 @@
 /* @flow */
-import { connect } from 'react-redux'
 import React from 'react'
-// eslint-disable-next-line
-import type { Connector } from 'react-redux'
+import { connect } from 'react-redux'
+import type { Dispatcher, Connector } from '@i/types'
 import HomeContainer from '../home/HomeContainer'
 import type { State, Action } from './reducers'
 
-type Props = State & {
-  dispatch: Action | Promise<Action>
-}
-
-function AppContainer ({location}: Props) {
-  let C: any
+function AppContainer (
+  { location }: State & Dispatcher<Action>
+) {
   switch (location) {
     case 'home':
-      C = HomeContainer
-      break
+      return <HomeContainer/>
     default:
-      C = function None () { return <span>error</span> }
+      return <span>error</span>
   }
-  return <C />
 }
 
-const connector: Connector<{}, Props> = connect(({ app }) => app)
+const connector: Connector<{}, State, Action> = connect(({ app }) => app)
 
 export default connector(AppContainer)
