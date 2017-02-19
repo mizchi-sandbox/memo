@@ -1,8 +1,19 @@
 /* @flow */
 
+// Pages
+export type LayoutType = 1 | 2 | 3
 export type Pages = 'index' | 'edit'
 export type TransitionAction = { type: "TRANSITION", location: Pages}
-export type SwitchLayoutAction = { type: "SWITCH_LAYOUT", layoutType: 1 | 2 | 3 }
-
+export type SwitchLayoutAction = { type: "SWITCH_LAYOUT", layoutType: LayoutType }
 export type PageAction = TransitionAction | SwitchLayoutAction
-export type Action = TransitionAction
+
+// Buffer
+export type UpdateBufferAction = { type: 'UPDATE_BUFFER', buffer: string }
+export type ResetBufferAction = { type: 'RESET_BUFFER'}
+export type ChangeBufferAction = { type: 'RESET_BUFFER', id: string, buffer: string}
+export type BufferAction = UpdateBufferAction | ResetBufferAction | ChangeBufferAction
+
+// export all
+export type Action =
+    PageAction
+  | BufferAction

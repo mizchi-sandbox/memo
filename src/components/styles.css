@@ -2,6 +2,12 @@
   --headerHeight: 1px;
 }
 
+.MarkdownPreview {
+  & h1 {
+    color: #111;
+  }
+}
+
 .Layout {
   margin: 0 auto;
   width: 100%;

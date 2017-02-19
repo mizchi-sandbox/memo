@@ -1,18 +1,18 @@
 /* @flow */
 import React from 'react'
 import autobind from 'autobind-decorator'
-// import type { Action } from '@i/types/actions'
+import type { Dispatcher } from '@i/types'
+import type { LayoutType } from '@i/types/actions'
 import ItemListContainer from '../containers/ItemListContainer'
 import MarkdownPreview from './MarkdownPreview'
+import Editor from './Editor'
 import styles from './styles.css'
 
 export default class Layout extends React.Component {
   props: {
-    children: any,
-    dispatch: any,
-    layoutType: 1 | 2 | 3
-  };
-  // & Dispatcher;
+    layoutType: LayoutType,
+    currentBuffer: string
+  } & Dispatcher;
 
   @autobind
   _onKeyDown (ev: SyntheticKeyboardEvent) {
@@ -40,7 +40,7 @@ export default class Layout extends React.Component {
   }
 
   render () {
-    const { layoutType } = this.props
+    const { layoutType, dispatch, currentBuffer } = this.props
     return (
       <div className={styles.Layout}>
         <div className={styles.HeaderContainer}/>
@@ -51,10 +51,12 @@ export default class Layout extends React.Component {
               <ItemListContainer/>
             </div>
             <div className={styles.EditPane}>
-              {this.props.children}
+              <Editor onChangeBody={text => {
+                dispatch({type: 'UPDATE_BUFFER', buffer: text})
+              }}/>
             </div>
             <div className={styles.PreviewPane}>
-              <MarkdownPreview md='# hello'/>
+              <MarkdownPreview md={currentBuffer}/>
             </div>
           </div>
         </div>
