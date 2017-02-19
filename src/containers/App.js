@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 // eslint-disable-next-line
 import type { Connector } from 'react-redux'
-import type { PageState, Dispatcher } from '../types'
+import type { PageState, Dispatcher } from 'types'
 import Hello from '../components/Hello'
 import Layout from '../components/Layout'
 

@@ -1,6 +1,6 @@
 /* @flow */
-import type { PageState } from '../types'
-import type { Action } from '../types/action'
+import type { PageState } from 'types'
+import type { Action } from 'types/actions'
 
 const initialState: PageState = {
   location: 'index'

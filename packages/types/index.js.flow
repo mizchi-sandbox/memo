@@ -1,7 +1,6 @@
 /* @flow */
-// eslint-disable-next-line
 import type { Store as ReduxStore } from 'redux'
-import type { Action } from './action'
+import type { Action } from './actions'
 
 export type PageState = {
   location: 'index' | 'edit'
