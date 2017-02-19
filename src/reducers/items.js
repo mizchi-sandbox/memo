@@ -1,5 +1,5 @@
 /* @flow */
-import type { Item } from 'types'
+import type { Item } from '@i/types'
 import type { Action } from 'types/actions'
 
 const initialItems: Item[] = [

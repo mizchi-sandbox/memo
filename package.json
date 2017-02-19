@@ -7,13 +7,12 @@
     "build": "webpack",
     "build:production": "NODE_ENV=production webpack",
     "typecheck": "flow",
-    "lint": "eslint .",
+    "lint": "eslint src packages",
     "lint:css": "stylelint src/**/*.css",
     "test": "NODE_ENV=test ava",
     "test:cover": "nyc --reporter=lcov --reporter=text yarn test"
   },
   "dependencies": {
-    "types": "fs:./packages/types",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -24,6 +23,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.3",
     "ava": "^0.18.1",
+    "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",

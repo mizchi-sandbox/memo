@@ -1,5 +1,5 @@
 /* @flow */
-import type { PageState } from 'types'
+import type { PageState } from '@i/types'
 import type { Action } from 'types/actions'
 
 const initialState: PageState = {

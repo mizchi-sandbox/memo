@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react'
-import type { Item as ItemType, Dispatcher } from 'types'
+import type { Item as ItemType, Dispatcher } from '@i/types'
 import Item from './Item'
 import styles from './styles.css'
 

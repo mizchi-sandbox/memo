@@ -1,5 +1,5 @@
 {
-  "name": "types",
+  "name": "@i/types",
   "private": true,
   "main": "index.js"
 }

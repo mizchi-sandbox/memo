@@ -8,13 +8,19 @@ export type Item = {
   selected?: boolean
 }
 
+export type Buffer = {
+  selectedItemId: ?string,
+  buffer: string
+}
+
 export type PageState = {
   location: 'index' | 'edit'
 }
 
 export type State = {
   page: PageState,
-  items: Item[]
+  items: Item[],
+  buffer: Buffer
 }
 
 export type Store = ReduxStore<State, Action>;

@@ -5,8 +5,11 @@ import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import createItem from '@i/api/commands/createItem'
 import App from './containers/App'
 import store from './store'
+
+createItem()
 
 const root = document.querySelector('.main')
 
