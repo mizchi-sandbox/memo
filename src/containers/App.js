@@ -9,11 +9,14 @@ import Layout from '../components/Layout'
 
 type PageProps = PageState & Dispatcher
 
-function Page ({ location: _ }: PageProps) {
+function Page ({ location: _, dispatch }: PageProps) {
   return (
-    <Layout>
-      <Editor onChangeBody={text => console.log(text)}/>
-    </Layout>
+    <Layout
+      children={
+        <Editor onChangeBody={text => console.log(text)} />
+      }
+      dispatch={dispatch}
+    />
   )
 }
 
