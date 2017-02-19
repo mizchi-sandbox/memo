@@ -6,7 +6,7 @@ import type { Item as ItemType } from '@i/types'
 export default function Item (
   props: {
     item: ItemType,
-    onClick: (ev: SyntheticEvent) => any
+    onClick: (SyntheticEvent) => any
   }
 ) {
   return <div onClick={ev => props.onClick(ev)}>{props.item.name}</div>

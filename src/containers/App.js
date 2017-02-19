@@ -6,12 +6,12 @@ import type { Connector } from 'react-redux'
 import type { PageState, Buffer, Dispatcher } from '@i/types'
 import Layout from '../components/Layout'
 
-type PageProps = {
+type Props = {
   page: PageState,
   buffer: Buffer
 } & Dispatcher
 
-function Page ({ dispatch, page, buffer }: PageProps) {
+function Page ({ dispatch, page, buffer }: Props) {
   return (
     <Layout
       layoutType={page.layoutType}
@@ -21,6 +21,6 @@ function Page ({ dispatch, page, buffer }: PageProps) {
   )
 }
 
-const connector: Connector<{}, PageProps> = connect(({ page, buffer }) => ({ page, buffer }))
+const connector: Connector<{}, Props> = connect(({ page, buffer }) => ({ page, buffer }))
 
 export default connector(Page)
