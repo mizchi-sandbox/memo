@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-yarn install
+# yarn install
 npm link packages/types
 npm link packages/api

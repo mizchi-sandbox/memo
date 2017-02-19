@@ -1,0 +1,117 @@
+#!/usr/bin/env node
+/* eslint-disable */
+
+/*
+Usage.
+
+: Input generator.yml
+
+pkgName: '@x/y'
+testExtension: .test.js
+files:
+  nest:
+    aaa:
+    - bbb
+  commands:
+  - createItem
+  - updateItem
+  queries:
+  - fetchAllItems
+
+: Run
+
+$ script/gen-pkg generator.yml
+
+: Output
+packages/@x/y/
+├── commands
+│   ├── createItem.js
+│   ├── createItem.test.js
+│   ├── updateItem.js
+│   └── updateItem.test.js
+├── nest
+│   └── aaa
+│       ├── bbb.js
+│       └── bbb.test.js
+├── package.json
+└── queries
+    ├── fetchAllItems.js
+    └── fetchAllItems.test.js
+
+4 directories, 9 files
+*/
+
+
+const path = require('path')
+const fs = require('fs')
+const mkdirp = require('mkdirp')
+
+const srcTemplate = (local) => `/* @flow */
+
+export default function ${local} (): any {
+  return
+}
+`
+const testTemplate = (local) => `/* @flow */
+import test from 'ava'
+import ${local} from './${local}'
+
+test('${local}', t => {
+  ${local}()
+  t.pass()
+})
+`
+
+const pkgTemplate = (pkgName) => `{
+  "name": "${pkgName}",
+  "private": true,
+  "main": "index"
+}`
+
+
+const write = (fpath, content) => {
+  if (fs.existsSync(fpath)) {
+    console.log(`Warning: ${fpath} exists already`)
+  } else {
+    fs.writeFileSync(fpath, content)
+  }
+}
+
+// == runtime
+
+const yaml = require('js-yaml')
+const cwd = process.cwd()
+const fpath = path.resolve(process.cwd(), process.argv[2])
+const obj = yaml.safeLoad(fs.readFileSync(fpath))
+
+const genFile = (fpathWithoutExt) => {
+  const local = path.basename(fpathWithoutExt)
+  const dir = path.dirname(fpathWithoutExt)
+  try {
+    mkdirp.sync(dir)
+  } catch (_e) {}
+  write(fpathWithoutExt + '.js' , srcTemplate(local))
+  write(fpathWithoutExt + (obj.testExtension || '.test.js') , testTemplate(local))
+}
+
+function walk (parentPath, ns) {
+  for (const k in ns) {
+    const v = ns[k]
+    if (typeof v === 'string') {
+      genFile(path.resolve(parentPath, k, v))
+    } else if (v instanceof Array) {
+      for (const _v of v) {
+        genFile(path.resolve(parentPath, k, _v))
+      }
+    } else if (v instanceof Object) {
+      for (const _k in v) {
+        walk(path.resolve(parentPath, k), v)
+      }
+    }
+  }
+}
+
+const pkgPath = path.resolve(cwd, 'packages', obj.pkgName)
+walk(pkgPath , obj.files)
+write(path.resolve(pkgPath, 'package.json'), pkgTemplate(obj.pkgName))
+write(path.resolve(pkgPath, 'index.js'), '')
