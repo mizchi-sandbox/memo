@@ -4,7 +4,7 @@ import type { PageAction } from 'types/actions'
 
 const initialState: PageState = {
   location: 'index',
-  layoutType: 2
+  layoutType: 1
 }
 
 export default (state: PageState = initialState, action: PageAction): PageState => {
