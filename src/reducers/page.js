@@ -1,15 +1,24 @@
 /* @flow */
 import type { PageState } from '@i/types'
-import type { Action } from 'types/actions'
+import type { PageAction } from 'types/actions'
 
 const initialState: PageState = {
-  location: 'index'
+  location: 'index',
+  layoutType: 2
 }
 
-export default (state: PageState = initialState, action: Action): PageState => {
+export default (state: PageState = initialState, action: PageAction): PageState => {
   switch (action.type) {
     case 'TRANSITION':
-      return {...state, location: action.location}
+      return {
+        location: action.location,
+        layoutType: state.layoutType
+      }
+    case 'SWITCH_LAYOUT':
+      return {
+        location: state.location,
+        layoutType: action.layoutType
+      }
     default:
       return state
   }

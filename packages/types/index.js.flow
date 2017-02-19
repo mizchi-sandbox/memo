@@ -13,9 +13,10 @@ export type Buffer = {
   buffer: string
 }
 
-export type PageState = {
-  location: 'index' | 'edit'
-}
+export type PageState = {|
+  location: 'index' | 'edit',
+  layoutType: 1 | 2 | 3
+|}
 
 export type State = {
   page: PageState,

@@ -2,6 +2,7 @@
 
 export type Pages = 'index' | 'edit'
 export type TransitionAction = { type: "TRANSITION", location: Pages}
+export type SwitchLayoutAction = { type: "SWITCH_LAYOUT", layoutType: 1 | 2 | 3 }
 
-export type PageAction = TransitionAction
+export type PageAction = TransitionAction | SwitchLayoutAction
 export type Action = TransitionAction
