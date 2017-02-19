@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:production": "NODE_ENV=production webpack",
     "typecheck": "flow",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "lint:css": "stylelint src/**/*.css",
     "test": "NODE_ENV=test ava",
     "test:cover": "nyc --reporter=lcov --reporter=text yarn test"

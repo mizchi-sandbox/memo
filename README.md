@@ -1,5 +1,12 @@
 # Modern Client Project ver 20170219
 
+```sh
+git clone mizchi/client-proj-skeleton
+cd client-proj-skeleton
+script/init
+yarn start
+```
+
 ## Concept
 
 - Linting by eslint, stylelint and flow
