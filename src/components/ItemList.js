@@ -1,13 +1,14 @@
 /* @flow */
 import React from 'react'
-import type { Item as ItemType, Dispatcher } from '@i/types'
+import type { Item as ItemType } from '@i/types'
 import Item from './Item'
 import styles from './styles.css'
 
 export default function ItemList (
   props: {
-    items: ItemType[]
-  } & Dispatcher
+    items: ItemType[],
+    dispatch: any
+  }
 ) {
   return (
     <ul className={styles.ItemList}>

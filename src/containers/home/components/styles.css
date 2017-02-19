@@ -1,0 +1,73 @@
+:root {
+  --headerHeight: 1px;
+}
+
+.Home {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  & .HeaderContainer {
+    height: var(--headerHeight);
+  }
+
+  & .ContentContainer {
+    width: 100%;
+    height: calc(100% - var(--headerHeight));
+
+    & .LayoutType1 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      & .MenuPane {
+        width: 100px;
+      }
+
+      & .EditPane {
+        flex: 1;
+      }
+
+      & .PreviewPane {
+        display: none;
+      }
+    }
+
+    & .LayoutType2 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      & .MenuPane {
+        display: none;
+      }
+
+      & .EditPane {
+        flex: 1;
+      }
+
+      & .PreviewPane {
+        display: none;
+      }
+    }
+
+    & .LayoutType3 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      & .MenuPane {
+        display: none;
+        width: 100px;
+      }
+
+      & .EditPane {
+        flex: 1;
+      }
+
+      & .PreviewPane {
+        flex: 1;
+      }
+    }
+  }
+}

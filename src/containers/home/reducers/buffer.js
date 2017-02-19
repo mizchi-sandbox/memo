@@ -1,5 +1,15 @@
 /* @flow */
-import type { Buffer, Action } from '@i/types'
+export type Action =
+  { type: 'UPDATE_BUFFER', buffer: string } |
+  { type: 'RESET_BUFFER' } |
+  { type: 'CHANGE_BUFFER', selectedItemId: string, buffer: string }
+
+export type State = {
+  selectedItemId: string,
+  buffer: string
+}
+
+type Buffer = State
 
 const initialBuffer: Buffer = {
   selectedItemId: '*scratch*',

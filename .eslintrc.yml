@@ -17,9 +17,10 @@ extends:
 rules:
   # add more rules
   prefer-const: 2
+  no-duplicate-imports: 0
   no-unused-vars:
   - 2
-  - argsIgnorePattern: ^_
+  - argsIgnorePattern: '^_'
   no-multiple-empty-lines:
   - 2
   - max: 1

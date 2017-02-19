@@ -1,18 +1,18 @@
 /* @flow */
 import React from 'react'
 import autobind from 'autobind-decorator'
-import type { Dispatcher } from '@i/types'
-import type { LayoutType } from '@i/types'
-import ItemListContainer from '../containers/ItemListContainer'
-import MarkdownPreview from './MarkdownPreview'
-import Editor from './Editor'
+import type {Dispatcher} from '@i/types'
+import ItemList from '../../../components/ItemList'
+import MarkdownPreview from '../../../components/MarkdownPreview'
+import Editor from '../../../components/Editor'
+import type {Action} from '../reducers'
 import styles from './styles.css'
 
-export default class Layout extends React.Component {
+export default class Home extends React.Component {
   props: {
-    layoutType: LayoutType,
+    layoutType: 1 | 2 | 3,
     currentBuffer: string
-  } & Dispatcher;
+  } & Dispatcher<Action>
 
   @autobind
   _onKeyDown (ev: SyntheticKeyboardEvent) {
@@ -42,13 +42,13 @@ export default class Layout extends React.Component {
   render () {
     const { layoutType, dispatch, currentBuffer } = this.props
     return (
-      <div className={styles.Layout}>
+      <div className={styles.Home}>
         <div className={styles.HeaderContainer}/>
         <div className={styles.ContentContainer}>
           <div className={styles['LayoutType' + layoutType]}>
             <div className={styles.MenuPane}>
               <div>Memo</div>
-              <ItemListContainer/>
+              <ItemList items={[]} dispatch={dispatch}/>
             </div>
             <div className={styles.EditPane}>
               <Editor onChangeBody={text => {

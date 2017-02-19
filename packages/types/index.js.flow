@@ -1,23 +1,6 @@
 /* @flow */
-import type { Store as ReduxStore } from 'redux'
-
-// Pages
-export type LayoutType = 1 | 2 | 3
-export type Pages = 'index' | 'edit'
-export type TransitionAction = { type: "TRANSITION", location: Pages}
-export type SwitchLayoutAction = { type: "SWITCH_LAYOUT", layoutType: LayoutType }
-export type PageAction = TransitionAction | SwitchLayoutAction
-
-// Buffer
-export type UpdateBufferAction = { type: 'UPDATE_BUFFER', buffer: string }
-export type ResetBufferAction = { type: 'RESET_BUFFER'}
-export type ChangeBufferAction = { type: 'RESET_BUFFER', id: string, buffer: string}
-export type BufferAction = UpdateBufferAction | ResetBufferAction | ChangeBufferAction
-
-// export all
-export type Action =
-    PageAction
-  | BufferAction
+// eslint-disable-next-line
+import type { Connector } from 'react-redux'
 
 export type Item = {
   id: string,
@@ -25,26 +8,6 @@ export type Item = {
   selected?: boolean
 }
 
-export type Buffer = {
-  selectedItemId: ?string,
-  buffer: string
-}
-
-export type PageState = {|
-  location: 'index' | 'edit',
-  layoutType: 1 | 2 | 3
-|}
-
-export type State = {
-  page: PageState,
-  items: Item[],
-  buffer: Buffer
-}
-
-export type Store = ReduxStore<State, Action>;
-
-// Support redux-promise
-export type Dispatch = (action: Action | Promise<Action>) => Promise<Action>;
-export type Dispatcher = {
-  dispatch: Dispatch
+export type Dispatcher<T> = {
+  dispatch: (a: T | Promise<T>) => any
 }
