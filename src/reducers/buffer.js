@@ -1,6 +1,5 @@
 /* @flow */
-import type { Buffer } from '@i/types'
-import type { Action } from 'types/actions'
+import type { Buffer, Action } from '@i/types'
 
 const initialBuffer: Buffer = {
   selectedItemId: '*scratch*',

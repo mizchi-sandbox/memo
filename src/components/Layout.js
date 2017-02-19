@@ -2,7 +2,7 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import type { Dispatcher } from '@i/types'
-import type { LayoutType } from '@i/types/actions'
+import type { LayoutType } from '@i/types'
 import ItemListContainer from '../containers/ItemListContainer'
 import MarkdownPreview from './MarkdownPreview'
 import Editor from './Editor'
